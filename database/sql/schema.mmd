@@ -1,0 +1,64 @@
+erDiagram
+    surveys ||--o{ questions : "has"
+    surveys ||--o{ responses : "receives"
+    questions ||--o{ options : "provides"
+    questions ||--o{ answers : "answered in"
+    responses ||--o{ answers : "contains"
+    options ||--o{ answers : "referenced by"
+
+    surveys {
+        BIGINT id PK
+        VARCHAR title
+        TEXT description
+        TINYINT is_active
+        DATETIME starts_at
+        DATETIME ends_at
+    }
+    questions {
+        BIGINT id PK
+        BIGINT survey_id FK
+        TEXT question_text
+        ENUM type
+        SMALLINT order
+        TINYINT is_required
+    }
+    options {
+        BIGINT id PK
+        BIGINT question_id FK
+        VARCHAR option_text
+        SMALLINT order
+    }
+    responses {
+        BIGINT id PK
+        BIGINT survey_id FK
+        CHAR anonymous_token "UUID"
+        DATETIME submitted_at
+    }
+    answers {
+        BIGINT id PK
+        BIGINT response_id FK
+        BIGINT question_id FK
+        BIGINT option_id FK
+        TEXT answer_text
+    }
+
+    clients ||--o{ vehicles : "owns"
+
+    clients {
+        BIGINT id PK
+        VARCHAR nombre
+        VARCHAR apellidos
+        VARCHAR nro_documento
+        VARCHAR correo
+        VARCHAR telefono
+        DATETIME deleted_at "Soft Delete"
+    }
+    vehicles {
+        BIGINT id PK
+        VARCHAR placa
+        VARCHAR marca
+        VARCHAR modelo
+        SMALLINT anio_fabricacion
+        BIGINT client_id FK
+        DATETIME deleted_at "Soft Delete"
+    }
