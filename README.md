@@ -202,6 +202,7 @@ El seeder también crea **5 clientes** y **10 vehículos** de ejemplo.
 - ✅ **Flash messages** de éxito/error en todas las operaciones
 - ✅ **Soft Deletes** (los registros eliminados se preservan en la DB)
 - ✅ **Autenticación** con Laravel Breeze
-- ✅ **Diseño responsivo** dark/gold con Bootstrap 5
+- ✅ **Diseño responsivo** premium (Slate Gray/Blue theme) con Bootstrap 5
 - ✅ **Migraciones** y **seeders** documentados
 - ✅ **SQL script** exportado en `database/sql/schema.sql`
+- ✅ **Diagrama ER** generado en `database/sql/diagrama_er.png`
